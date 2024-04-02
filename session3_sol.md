@@ -25,13 +25,19 @@ Run your first service.
    - FSM analysis tool
 
         ```bash
-        docker logs trader_abci_0 --follow 
+        cd trader; poetry run autonomy analyse logs --from-dir trader_service/abci_build/persistent_data/logs/ --agent aea_0 --fsm --reset-db; cd .. 
         ```
 
    - Trades summary script
 
         ```bash
-        docker logs trader_abci_0 --follow 
+        cd trader; poetry run python ../trades.py; cd ..
+        ```
+
+       also,
+
+        ```bash
+        cd trader; poetry run python ../report.py; cd ..
         ```
 
 6. Investigate configuration parameters (`service.yaml`). Open the file `trader/packages/valory/services/trader/service.yaml` and take a look at the configuration parameters.
