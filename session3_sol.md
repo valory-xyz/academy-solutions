@@ -2,7 +2,7 @@
 
 ## Exercise 1
 
-Run your first service:
+Run your first service.
 
 ### Solution
 
