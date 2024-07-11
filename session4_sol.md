@@ -1,10 +1,10 @@
 # OLAS Dev Academy - Session IV Homework
 
-The solutions on this repository are based on [hello-world v0.1.7](https://github.com/valory-xyz/hello-world/releases/tag/v0.1.7) (although they are likely valid for other versions).
+The solutions on this repository are based on [hello-world v0.1.8](https://github.com/valory-xyz/hello-world/releases/tag/v0.1.8) (although they are likely valid for other versions).
 
 - Clone the repository `https://github.com/valory-xyz/hello-world/`
     `git clone git@github.com:valory-xyz/hello-world.git`
-    `git checkout v0.1.7`
+    `git checkout v0.1.8`
 
 For convenience, we provide the script `run_hello_world_service.sh`, which is in charge of executing a number of required steps to run the service after modifying the source code. Make sure to copy it in the root of your cloned repository. You can examine it to get familiar with the framework CLI.
 
@@ -115,6 +115,7 @@ Implement a new state on the FSM (Round + Behaviour) that prints to screen how m
             payload_class = PrintCountPayload
             synchronized_data_class = SynchronizedData
             done_event = Event.DONE
+            none_event = Event.NONE
             no_majority_event = Event.NO_MAJORITY
             collection_key = get_name(SynchronizedData.participant_to_selection)
             selection_key = get_name(SynchronizedData.print_count)
@@ -129,6 +130,7 @@ Implement a new state on the FSM (Round + Behaviour) that prints to screen how m
         },
         PrintCountRound: {                              # Added
             Event.DONE: ResetAndPauseRound,             # Added
+            Event.NONE: RegistrationRound,              # Added
             Event.ROUND_TIMEOUT: RegistrationRound,     # Added
         },
         ```
